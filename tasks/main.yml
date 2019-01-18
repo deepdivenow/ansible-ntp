@@ -1,0 +1,19 @@
+---
+# tasks file for ansible-ntp
+
+- name: Ensure NTP-related packages are installed.
+  package:
+    name: [ntp, tzdata]
+    state: present
+
+- name: Generate ntp.conf file
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
+  notify: restart ntp
+
+- name: Ensure NTP is running and enabled.
+  service:
+    name: ntpd
+    state: started
+    enabled: true

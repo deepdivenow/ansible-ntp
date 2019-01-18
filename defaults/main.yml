@@ -1,0 +1,15 @@
+---
+# defaults file for ansible-ntp
+
+ntp_driftfile: /var/lib/ntp/drift
+ntp_servers:
+- ntp.sonur.ru iburst
+- 85.21.78.23 iburst
+- 0.rhel.pool.ntp.org iburst
+- 1.rhel.pool.ntp.org iburst
+
+ntp_restrict:
+- 127.0.0.1
+- ::1
+
+ntp_local_enable: False
